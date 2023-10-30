@@ -48,8 +48,8 @@ class airCon extends Remote {
 }
 
 public class main {
+	public static Scanner scanner = new Scanner(System.in);
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
 		TV tv = new TV();
 		airCon aircon = new airCon();
 
@@ -68,24 +68,7 @@ public class main {
 		scanner.nextLine();
 
 		if(getDevice == 1) {
-			System.out.println("type \"on\" or \"off\"");
-			String tvTurn = null;
-
-			boolean onCheck = true;
-			while(onCheck) {
-				tvTurn = scanner.nextLine();
-				switch(tvTurn) {
-					case "on":
-						onCheck = false;
-						break;
-					case "off":
-						onCheck = false;
-						break;
-					default:
-						System.out.println("You need to type \"on\" or \"off\"");
-						break;
-				}
-			}
+			String tvTurn = onOrOff();
 			System.out.print("\n");
 
 			switch(tvTurn) {
@@ -126,24 +109,7 @@ public class main {
 			}
 		} else {
 
-			System.out.println("type \"on\" or \"off\"");
-			String acTurn = null;
-
-			boolean onCheck = true;
-			while(onCheck) {
-				acTurn = scanner.nextLine();
-				switch(acTurn) {
-					case "on":
-						onCheck = false;
-						break;
-					case "off":
-						onCheck = false;
-						break;
-					default:
-						System.out.println("You need to type \"on\" or \"off\"");
-						break;
-				}
-			}
+			String acTurn = onOrOff();
 			System.out.print("\n");
 
 			switch(acTurn) {
@@ -182,5 +148,26 @@ public class main {
 					break;
 			}
 		}
+	}
+	public static String onOrOff() {
+		System.out.println("type \"on\" or \"off\"");
+		String turn = null;
+
+		boolean onCheck = true;
+		while(onCheck) {
+			turn = scanner.nextLine();
+			switch(turn) {
+				case "on":
+					onCheck = false;
+					break;
+				case "off":
+					onCheck = false;
+					break;
+				default:
+					System.out.println("You need to type \"on\" or \"off\"");
+					break;
+				}
+			}
+		return turn;
 	}
 }
